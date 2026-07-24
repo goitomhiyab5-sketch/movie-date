@@ -108,7 +108,6 @@
             line-height: 1.6;
         }
 
-        /* Circular Photo Frame Styling */
         .photo-frame-container {
             display: flex;
             justify-content: center;
@@ -116,11 +115,12 @@
         }
 
         .couple-photo {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             border: 3px solid var(--primary);
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #0b0d17;
             box-shadow: 0 0 25px rgba(230, 36, 41, 0.6);
         }
 
@@ -318,7 +318,7 @@
             border: 2px solid var(--primary);
             border-radius: 20px;
             padding: 30px;
-            max-width: 400px;
+            max-width: 440px;
             width: 90%;
             text-align: center;
             box-shadow: 0 0 40px rgba(230, 36, 41, 0.6);
@@ -328,20 +328,27 @@
         .modal-content p {
             color: #ff4d4d;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 20px;
             line-height: 1.5;
             text-shadow: 0 0 10px rgba(230, 36, 41, 0.4);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .modal-btn {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -349,6 +356,15 @@
         .modal-btn:hover {
             background: var(--primary-hover);
             box-shadow: 0 0 15px rgba(255, 59, 63, 0.8);
+        }
+
+        .modal-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -359,9 +375,8 @@
     <div class="step active" id="step0">
         <h1>🎥 Welcome to Our First Distance Movie Night, Aminey! ❤️</h1>
         
-        <!-- Circular Photo Frame (Replace placeholder link in src with your actual photo URL whenever you're ready) -->
         <div class="photo-frame-container">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Our Photo" class="couple-photo">
+            <img src="YOUR_GRADUATION_PHOTO_URL_HERE.jpg" alt="Our Photo" class="couple-photo">
         </div>
 
         <div class="welcome-msg">
@@ -456,8 +471,11 @@
             <button class="option-btn" onclick="selectOption('outfit', 'Half-Naked 🔥🌶️', this)">
                 <span>Half-Naked 🔥🌶️</span>
             </button>
-            <button class="option-btn" onclick="selectOption('outfit', 'Fully Naked 🙈🔞', this, false, true)">
+            <button class="option-btn" onclick="selectOption('outfit', 'Fully Naked 🙈🔞', this, false, true, false)">
                 <span>Fully Naked 🙈🔞</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('outfit', 'Something wild & completely off limits 🔥🥵', this, false, false, true)">
+                <span>Something wild & completely off limits 🔥🥵</span>
             </button>
         </div>
         <button class="btn-main" onclick="goToRuleStep()">Next: Movie Night Rule ⚠️</button>
@@ -544,11 +562,13 @@
     </div>
 </div>
 
-<!-- Custom Styled Popup Modal -->
+<!-- Custom Styled Popup Modal with Payment Options -->
 <div id="customModal">
     <div class="modal-content">
-        <p id="modalText">To unlock this premium subscription, you need to pay 10,000 Birr first! 💸😜</p>
-        <button class="modal-btn" onclick="closeModal()">Got it! 😂</button>
+        <p id="modalText">To unlock this premium subscription, you need to pay 500,000 Birr first! 💸😜</p>
+        <div class="modal-buttons" id="modalButtons">
+            <button class="modal-btn" onclick="closeModal()">Got it! 😂</button>
+        </div>
     </div>
 </div>
 
@@ -562,22 +582,25 @@
         afterActivity: ''
     };
 
-    function selectOption(category, value, btn, isNewestMovie = true, isFullyNaked = false) {
+    function selectOption(category, value, btn, isNewestMovie = true, isFullyNaked = false, isNasty = false) {
         if (category === 'movie' && isNewestMovie === false) {
             btn.classList.add('shake-btn');
-            setTimeout(() => {
-                btn.classList.remove('shake-btn');
-            }, 500);
-            showModal("Nope! You have to select the newest Spider-Man movie! 🕷️✨");
+            setTimeout(() => btn.classList.remove('shake-btn'), 500);
+            showSimpleModal("Nope! You have to select the newest Spider-Man movie! 🕷️✨");
             return;
         }
 
         if (category === 'outfit' && isFullyNaked === true) {
             btn.classList.add('shake-btn');
-            setTimeout(() => {
-                btn.classList.remove('shake-btn');
-            }, 500);
-            showModal("To unlock this premium subscription, you need to pay 10,000 Birr first! 💸😜");
+            setTimeout(() => btn.classList.remove('shake-btn'), 500);
+            showPaymentModal();
+            return;
+        }
+
+        if (category === 'outfit' && isNasty === true) {
+            btn.classList.add('shake-btn');
+            setTimeout(() => btn.classList.remove('shake-btn'), 500);
+            showSimpleModal("Oooooh spicy choice! 🔥 But wait, you need physical access for that subscription! 🤭❤️");
             return;
         }
 
@@ -591,9 +614,27 @@
         if(category === 'drink') document.getElementById('customDrink').value = '';
     }
 
-    function showModal(message) {
-        document.getElementById('modalText').innerText = message;
+    function showSimpleModal(message) {
+        document.getElementById('modalTextinnerText = message;
+        document.getElementById('modalText').innerHTML = message;
+        document.getElementById('modalButtons').innerHTML = '<button class="modal-btn" onclick="closeModal()">Got it! 😂</button>';
         document.getElementById('customModal').style.display = 'flex';
+    }
+
+    function showPaymentModal() {
+        document.getElementById('modalText').innerHTML = "To unlock this premium subscription, you need to pay 500,000 Birr first! You can pay this much to see your girl, but you need to be in person to get this subscription! 🤭💸";
+        document.getElementById('modalButtons').innerHTML = `
+            <button class="modal-btn" onclick="showCbaAccount()">💳 Make the payment</button>
+            <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
+        `;
+        document.getElementById('customModal').style.display = 'flex';
+    }
+
+    function showCbaAccount() {
+        document.getElementById('modalText').innerHTML = "🏦 <b>Commercial Bank of Ethiopia (CBE) Account:</b><br><br><span style='color: #00d2ff; font-size: 1.3rem;'>1000324250747</span><br><br>Send the 500,000 Birr immediately or the subscription remains locked! 📸😂";
+        document.getElementById('modalButtons').innerHTML = `
+            <button class="modal-btn" onclick="closeModal()">Done, check my screenshot! 🤭</button>
+        `;
     }
 
     function closeModal() {
@@ -611,7 +652,7 @@
 
     function goToFoodStep() {
         if (!choices.movie) {
-            showModal('Please select the Spider-Man movie option first!');
+            showSimpleModal('Please select the Spider-Man movie option first!');
             return;
         }
         showStep(2);
@@ -622,7 +663,7 @@
         if (customFoodVal.trim() !== '') choices.food = customFoodVal;
 
         if (!choices.food) {
-            showModal('Please select or type a food option!');
+            showSimpleModal('Please select or type a food option!');
             return;
         }
         showStep(3);
@@ -633,7 +674,7 @@
         if (customDrinkVal.trim() !== '') choices.drink = customDrinkVal;
 
         if (!choices.drink) {
-            showModal('Please select or type a drink option!');
+            showSimpleModal('Please select or type a drink option!');
             return;
         }
         showStep(4);
@@ -641,7 +682,7 @@
 
     function goToRuleStep() {
         if (!choices.outfit) {
-            showModal('Please select an outfit option!');
+            showSimpleModal('Please select an outfit option!');
             return;
         }
         showStep(5);
@@ -649,7 +690,7 @@
 
     function goToAfterStep() {
         if (!choices.rule) {
-            showModal('Please select a movie night rule!');
+            showSimpleModal('Please select a movie night rule!');
             return;
         }
         showStep(6);
@@ -657,7 +698,7 @@
 
     function finishSelection() {
         if (!choices.afterActivity) {
-            showModal('Please select an after-movie activity!');
+            showSimpleModal('Please select an after-movie activity!');
             return;
         }
 
