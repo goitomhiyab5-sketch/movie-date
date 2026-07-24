@@ -1,0 +1,388 @@
+> Hiyab:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man Movie Date! 🕷️🎬</title>
+    <style>
+        :root {
+            --bg: #0a0c10;
+            --card-bg: #161b22;
+            --primary: #e62429;
+            --primary-hover: #ff3b3f;
+            --accent: #00d2ff;
+            --text: #f0f6fc;
+            --text-sub: #8b949e;
+            --border: #30363d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(230, 36, 41, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.12) 0%, transparent 40%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 36, 41, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shake animation when clicking older movies */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake-btn {
+            animation: shake 0.4s ease-in-out;
+            border-color: #ff3b3f !important;
+            box-shadow: 0 0 10px rgba(255, 59, 63, 0.5);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(230, 36, 41, 0.5);
+        }
+
+        p {
+            color: var(--text-sub);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option-btn {
+            background: #21262d;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            background: #2c313a;
+            transform: translateY(-2px);
+        }
+
+        .option-btn.selected {
+            background: rgba(230, 36, 41, 0.2);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(230, 36, 41, 0.3);
+        }
+
+        /* Highlight the newest movie */
+        .option-btn.featured {
+            border-color: rgba(230, 36, 41, 0.6);
+            background: rgba(230, 36, 41, 0.1);
+        }
+
+> Hiyab:
+.btn-main {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(230, 36, 41, 0.4);
+        }
+
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 36, 41, 0.6);
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0d1117;
+            color: white;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .custom-input:focus {
+            border-color: var(--accent);
+        }
+
+        .summary-box {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .summary-item {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 8px;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-label {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .summary-val {
+            color: var(--accent);
+            font-weight: 600;
+            text-align: right;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Step 1: Movie Selection -->
+    <div class="step active" id="step1">
+        <h1>Spider-Man Movie Date! 🕷️</h1>
+        <p>Pick which Spider-Man movie we are watching:</p>
+        <div class="options-grid">
+            <button class="option-btn featured" onclick="selectOption('movie', 'Spider-Man: Brand New Day (Upcoming 2026)', this, true)">
+                <span>Brand New Day (Tom Holland) 🆕🕸️</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('movie', 'Spider-Verse Saga (Animated)', this, false)">
+                <span>Spider-Verse Saga (Animated) 🎨</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('movie', 'Tom Holland MCU Trilogy', this, false)">
+                <span>Tom Holland MCU Trilogy 🕸️</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('movie', 'Tobey Maguire Classics', this, false)">
+                <span>Tobey Maguire Classics 🍕</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('movie', 'Andrew Garfield Duology', this, false)">
+                <span>Andrew Garfield Duology ⚡</span>
+            </button>
+        </div>
+        <button class="btn-main" onclick="nextStep(2)">Next: Choose Snacks 🍿</button>
+    </div>
+
+    <!-- Step 2: Food Selection -->
+    <div class="step" id="step2">
+        <h1>Movie Snacks 🍕🍿</h1>
+        <p>What are we eating during the movie?</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('food', 'Pizza', this)">
+                <span>Pizza 🍕</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('food', 'Chicken Wings', this)">
+                <span>Chicken Wings 🍗</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('food', 'Classic popcorn made by your sisters', this)">
+
+> Hiyab:
+<span>Classic popcorn made by your sisters 🍿</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('food', 'Burger & Fries', this)">
+                <span>Burger & Fries 🍔🍟</span>
+            </button>
+        </div>
+        <input type="text" id="customFood" class="custom-input" placeholder="Or type something else here..." oninput="setCustom('food', this.value)">
+        <br><br>
+        <button class="btn-main" onclick="goToDrinkStep()">Next: Choose Drinks 🥤</button>
+    </div>
+
+    <!-- Step 3: Drink Selection -->
+    <div class="step" id="step3">
+        <h1>Refreshments 🥤</h1>
+        <p>What are we drinking?</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('drink', 'Soft Drinks', this)">
+                <span>Soft Drinks 🥤</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('drink', 'Iced Latte', this)">
+                <span>Iced Latte ☕🧊</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('drink', 'Juice', this)">
+                <span>Juice 🧃</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('drink', 'Milkshake', this)">
+                <span>Milkshake 🥤</span>
+            </button>
+        </div>
+        <input type="text" id="customDrink" class="custom-input" placeholder="Or type something else here..." oninput="setCustom('drink', this.value)">
+        <br><br>
+        <button class="btn-main" onclick="finishSelection()">See Our Plan! 🎯</button>
+    </div>
+
+    <!-- Step 4: Final Confirmation -->
+    <div class="step" id="step4">
+        <h1>It's a Date! 🕸️❤️</h1>
+        <p>Here is our official Spider-Man movie date plan:</p>
+        <div class="summary-box">
+            <div class="summary-item">
+                <span class="summary-label">Movie</span>
+                <span class="summary-val" id="sumMovie">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Food</span>
+                <span class="summary-val" id="sumFood">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Drink</span>
+                <span class="summary-val" id="sumDrink">-</span>
+            </div>
+        </div>
+        <p style="font-size:1.05rem; color:#f0f6fc; font-weight: 500; line-height: 1.6;">
+            The movie will release on July 31, 2026! Take a screenshot and send it to your boo so she can set the time that you both will see it on a video call! 📲❤️
+        </p>
+    </div>
+</div>
+
+<script>
+    const choices = {
+        movie: '',
+        food: '',
+        drink: ''
+    };
+
+    function selectOption(category, value, btn, isNewest) {
+        // If user tries to select an older movie
+        if (category === 'movie' && isNewest === false) {
+            btn.classList.add('shake-btn');
+            setTimeout(() => {
+                btn.classList.remove('shake-btn');
+            }, 500);
+            alert("Nope! You have to select the newest Spider-Man movie! 🕷️✨");
+            return;
+        }
+
+        choices[category] = value;
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.option-btn');
+        buttons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        if(category === 'food') document.getElementById('customFood').value = '';
+        if(category === 'drink') document.getElementById('customDrink').value = '';
+    }
+
+    function setCustom(category, value) {
+        if(value.trim() !== '') {
+            choices[category] = value;
+            const container = document.getElementById(category === 'food' ? 'step2' : 'step3');
+            const buttons = container.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+        }
+    }
+
+> Hiyab:
+function nextStep(stepNum) {
+        if (!choices.movie) {
+            alert('Please select the Spider-Man movie option first!');
+            return;
+        }
+        showStep(stepNum);
+    }
+
+    function goToDrinkStep() {
+        const customFoodVal = document.getElementById('customFood').value;
+        if (customFoodVal.trim() !== '') choices.food = customFoodVal;
+
+        if (!choices.food) {
+            alert('Please select or type a food option!');
+            return;
+        }
+        showStep(3);
+    }
+
+    function finishSelection() {
+        const customDrinkVal = document.getElementById('customDrink').value;
+        if (customDrinkVal.trim() !== '') choices.drink = customDrinkVal;
+
+        if (!choices.drink) {
+            alert('Please select or type a drink option!');
+            return;
+        }
+
+        document.getElementById('sumMovie').innerText = choices.movie;
+        document.getElementById('sumFood').innerText = choices.food;
+        document.getElementById('sumDrink').innerText = choices.drink;
+        showStep(4);
+    }
+
+    function showStep(stepNum) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + stepNum).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
