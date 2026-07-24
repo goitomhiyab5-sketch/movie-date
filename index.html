@@ -231,7 +231,7 @@
             border-radius: 18px;
             padding: 25px;
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .summary-item {
@@ -276,7 +276,29 @@
             box-shadow: 0 0 15px rgba(230, 36, 41, 0.3);
         }
 
-        /* Custom Popup Modal Styling */
+        .closing-note {
+            background: rgba(10, 14, 26, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .closing-note p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        .closing-note p:last-child {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* Custom Styled Popup Modal */
         #customModal {
             display: none;
             position: fixed;
@@ -509,9 +531,12 @@
             </div>
         </div>
 
-        <p style="font-size: 1.05rem; color: var(--text-sub); margin-bottom: 10px;">
-            This special movie night officially premieres on July 31 and such things. Get ready! ❤️
-        </p>
+        <div class="closing-note">
+            <p>This special movie night officially premieres on July 31, 2026! ❤️</p>
+            <p>📸 Take a screenshot of this page and send it to your boo. Then choose a time that works for both of you, hop on a video call, and press play together.</p>
+            <p>Distance may keep you apart, but it doesn't have to keep date night away.</p>
+            <p>One movie. Two hearts. One unforgettable night. ❤️🎥</p>
+        </div>
 
         <div class="premiere-badge">
             🍿 Coming Soon | 🎬 Premiere Date: July 31, 2026
