@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spider-Man Movie Date! 🕷️🎬</title>
+    <title>Distance Movie Night with Aminey! 🎥❤️</title>
     <style>
         :root {
-            --bg: #0a0c10;
-            --card-bg: #161b22;
+            --bg: #0b132b;
+            --card-bg: #1c2541;
             --primary: #e62429;
             --primary-hover: #ff3b3f;
-            --accent: #00d2ff;
-            --text: #f0f6fc;
-            --text-sub: #8b949e;
-            --border: #30363d;
+            --accent: #3a86ff;
+            --glow: #ff0055;
+            --text: #ffffff;
+            --text-sub: #cbd5e1;
+            --border: #334155;
         }
 
         * {
@@ -27,8 +28,9 @@
         body {
             background-color: var(--bg);
             background-image: 
-                radial-gradient(circle at 20% 20%, rgba(230, 36, 41, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(230, 36, 41, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(58, 134, 255, 0.35) 0%, transparent 45%),
+                linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -39,12 +41,13 @@
 
         .container {
             width: 100%;
-            max-width: 500px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            max-width: 520px;
+            background: rgba(28, 37, 65, 0.95);
+            border: 2px solid rgba(230, 36, 41, 0.4);
+            border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 36, 41, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 36, 41, 0.25);
+            backdrop-filter: blur(10px);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -56,42 +59,63 @@
 
         .step.active {
             display: block;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Shake animation when clicking older movies */
         @keyframes shake {
             0% { transform: translateX(0); }
-            20% { transform: translateX(-8px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-8px); }
-            80% { transform: translateX(8px); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
             100% { transform: translateX(0); }
         }
 
         .shake-btn {
             animation: shake 0.4s ease-in-out;
             border-color: #ff3b3f !important;
-            box-shadow: 0 0 10px rgba(255, 59, 63, 0.5);
+            box-shadow: 0 0 15px rgba(255, 59, 63, 0.7) !important;
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             margin-bottom: 15px;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(230, 36, 41, 0.5);
+            text-shadow: 0 0 12px rgba(230, 36, 41, 0.6);
+            line-height: 1.3;
         }
 
         p {
             color: var(--text-sub);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        .welcome-msg, .final-msg {
+            background: rgba(11, 19, 43, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .welcome-msg p, .final-msg p {
+            margin-bottom: 12px;
+            font-size: 0.98rem;
+        }
+
+        .welcome-msg p:last-child {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
         }
 
         .options-grid {
@@ -101,66 +125,67 @@
         }
 
         .option-btn {
-            background: #21262d;
-            border: 1px solid var(--border);
+            background: #0b132b;
+            border: 1.5px solid var(--border);
             color: var(--text);
-            padding: 14px 18px;
-            border-radius: 12px;
+            padding: 15px 18px;
+            border-radius: 14px;
             font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             text-align: left;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .option-btn:hover {
+> Hiyab:
+.option-btn:hover {
             border-color: var(--accent);
-            background: #2c313a;
+            background: #152238;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
 
         .option-btn.selected {
-            background: rgba(230, 36, 41, 0.2);
+            background: rgba(230, 36, 41, 0.25);
             border-color: var(--primary);
             color: #ffffff;
-            box-shadow: 0 0 12px rgba(230, 36, 41, 0.3);
+            box-shadow: 0 0 15px rgba(230, 36, 41, 0.4);
         }
 
-        /* Highlight the newest movie */
         .option-btn.featured {
-            border-color: rgba(230, 36, 41, 0.6);
-            background: rgba(230, 36, 41, 0.1);
+            border-color: rgba(230, 36, 41, 0.8);
+            background: rgba(230, 36, 41, 0.15);
+            box-shadow: 0 0 12px rgba(230, 36, 41, 0.2);
         }
 
-> Hiyab:
-.btn-main {
-            background: var(--primary);
+        .btn-main {
+            background: linear-gradient(135deg, #e62429 0%, #ff3b3f 100%);
             color: white;
             border: none;
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 15px 28px;
+            border-radius: 14px;
             font-size: 1.05rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(230, 36, 41, 0.4);
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(230, 36, 41, 0.5);
         }
 
         .btn-main:hover {
-            background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(230, 36, 41, 0.6);
+            box-shadow: 0 8px 25px rgba(230, 36, 41, 0.7);
         }
 
         .custom-input {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: #0d1117;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: #0b132b;
             color: white;
             margin-top: 10px;
             font-size: 0.95rem;
@@ -169,22 +194,23 @@
 
         .custom-input:focus {
             border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(58, 134, 255, 0.4);
         }
 
         .summary-box {
-            background: #0d1117;
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            background: #0b132b;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
             padding: 20px;
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .summary-item {
             margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #21262d;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 8px;
         }
 
@@ -196,24 +222,49 @@
 
         .summary-label {
             color: var(--text-sub);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .summary-val {
-            color: var(--accent);
+            color: #60a5fa;
             font-weight: 600;
             text-align: right;
             margin-left: 10px;
+        }
+
+        .premiere-badge {
+            display: inline-block;
+            background: rgba(230, 36, 41, 0.2);
+            border: 1px solid var(--primary);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Step 0: Welcome Screen -->
+    <div class="step active" id="step0">
+        <h1>🎥 Welcome to Our First Distance Movie Night, Aminey! ❤️</h1>
+        <div class="welcome-msg">
+            <p>Distance may keep us apart, but it can't stop us from making memories together.</p>
+            <p>Welcome to our very first movie night, baby. ❤️ We've both dreamed of watching a movie side by side, so until that day comes, this is our little way of making it happen. I hope tonight brings us laughter, comfort, and that special feeling of being together, even if it's through a screen.</p>
+            <p>Lights off, snacks ready... and let's press play together. 🍿🥹❤️</p>
+        </div>
+        <button class="btn-main" onclick="showStep(1)">Next: Pick Our Movie ➡️</button>
+    </div>
+
     <!-- Step 1: Movie Selection -->
-    <div class="step active" id="step1">
+    <div class="step" id="step1">
         <h1>Spider-Man Movie Date! 🕷️</h1>
-        <p>Pick which Spider-Man movie we are watching:</p>
+
+> Hiyab:
+<p>Pick which Spider-Man movie we are watching:</p>
         <div class="options-grid">
             <button class="option-btn featured" onclick="selectOption('movie', 'Spider-Man: Brand New Day (Upcoming 2026)', this, true)">
                 <span>Brand New Day (Tom Holland) 🆕🕸️</span>
@@ -231,7 +282,7 @@
                 <span>Andrew Garfield Duology ⚡</span>
             </button>
         </div>
-        <button class="btn-main" onclick="nextStep(2)">Next: Choose Snacks 🍿</button>
+        <button class="btn-main" onclick="goToFoodStep()">Next: Choose Snacks 🍿</button>
     </div>
 
     <!-- Step 2: Food Selection -->
@@ -246,9 +297,7 @@
                 <span>Chicken Wings 🍗</span>
             </button>
             <button class="option-btn" onclick="selectOption('food', 'Classic popcorn made by your sisters', this)">
-
-> Hiyab:
-<span>Classic popcorn made by your sisters 🍿</span>
+                <span>Classic popcorn made by your sisters 🍿</span>
             </button>
             <button class="option-btn" onclick="selectOption('food', 'Burger & Fries', this)">
                 <span>Burger & Fries 🍔🍟</span>
@@ -285,12 +334,15 @@
     <!-- Step 4: Final Confirmation -->
     <div class="step" id="step4">
         <h1>It's a Date! 🕸️❤️</h1>
-        <p>Here is our official Spider-Man movie date plan:</p>
+        <p>Here is our official movie date plan:</p>
+        
         <div class="summary-box">
             <div class="summary-item">
                 <span class="summary-label">Movie</span>
                 <span class="summary-val" id="sumMovie">-</span>
-            </div>
+
+> Hiyab:
+</div>
             <div class="summary-item">
                 <span class="summary-label">Food</span>
                 <span class="summary-val" id="sumFood">-</span>
@@ -300,9 +352,17 @@
                 <span class="summary-val" id="sumDrink">-</span>
             </div>
         </div>
-        <p style="font-size:1.05rem; color:#f0f6fc; font-weight: 500; line-height: 1.6;">
-            The movie will release on July 31, 2026! Take a screenshot and send it to your boo so she can set the time that you both will see it on a video call! 📲❤️
-        </p>
+
+        <div class="premiere-badge">
+            🍿 Coming Soon | 🎬 Premiere Date: July 31, 2026
+        </div>
+
+        <div class="final-msg">
+            <p>This special movie night officially premieres on July 31, 2026! ❤️</p>
+            <p>📸 Take a screenshot of this page and send it to your boo. Then choose a time that works for both of you, hop on a video call, and press play together.</p>
+            <p>Distance may keep you apart, but it doesn't have to keep date night away.</p>
+            <p><strong>One movie. Two hearts. One unforgettable night. ❤️🎥</strong></p>
+        </div>
     </div>
 </div>
 
@@ -314,7 +374,6 @@
     };
 
     function selectOption(category, value, btn, isNewest) {
-        // If user tries to select an older movie
         if (category === 'movie' && isNewest === false) {
             btn.classList.add('shake-btn');
             setTimeout(() => {
@@ -343,13 +402,12 @@
         }
     }
 
-> Hiyab:
-function nextStep(stepNum) {
+    function goToFoodStep() {
         if (!choices.movie) {
             alert('Please select the Spider-Man movie option first!');
             return;
         }
-        showStep(stepNum);
+        showStep(2);
     }
 
     function goToDrinkStep() {
