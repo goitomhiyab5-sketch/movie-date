@@ -530,9 +530,9 @@
 <!-- Custom Styled Popup Modal with Payment Options -->
 <div id="customModal">
     <div class="modal-content">
-        <p id="modalText">To unlock this premium subscription, you need to pay 500,000 Birr first! If you can pay this much to see your girl... 🤭💸</p>
+        <p id="modalText">To unlock this premium subscription, you need to pay 500,000 Birr first! You can pay this much to see your girl.</p>
         <div class="modal-buttons" id="modalButtons">
-            <button class="modal-btn" onclick="showPaymentModal()">💳 Make the payment</button>
+            <button class="modal-btn" onclick="showCbaAccount()">💳 Make the payment</button>
             <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
         </div>
     </div>
@@ -587,7 +587,7 @@
     }
 
     function showInitialPaymentModal() {
-        document.getElementById('modalText').innerHTML = "To unlock this premium subscription, you need to pay 500,000 Birr first! If you can pay this much to see your girl... 🤭💸";
+        document.getElementById('modalText').innerHTML = "To unlock this premium subscription, you need to pay 500,000 Birr first! You can pay this much to see your girl.";
         document.getElementById('modalButtons').innerHTML = `
             <button class="modal-btn" onclick="showCbaAccount()">💳 Make the payment</button>
             <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
@@ -595,14 +595,18 @@
         document.getElementById('customModal').style.display = 'flex';
     }
 
-    function showPaymentModal() {
-        showCbaAccount();
+    function showCbaAccount() {
+        document.getElementById('modalText').innerHTML = "🏦 <b>Name: Aminey</b><br>Commercial Bank of Ethiopia Account:<br><br><span style='color: #00d2ff; font-size: 1.3rem;'>1000324250747</span><br><br>Send this birr immediately or the subscription remains locked! 📸😂";
+        document.getElementById('modalButtons').innerHTML = `
+            <button class="modal-btn" onclick="checkScreenshot()">Check my screenshot! 🤭</button>
+            <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
+        `;
     }
 
-    function showCbaAccount() {
-        document.getElementById('modalText').innerHTML = "🏦 <b>Commercial Bank of Ethiopia (CBE) Account:</b><br><br><span style='color: #00d2ff; font-size: 1.3rem;'>1000324250747</span><br><br>Send this screenshot immediately to your girl! Thank you for that. The subscription remains locked until you do! 📸😂";
+    function checkScreenshot() {
+        document.getElementById('modalText').innerHTML = "❌ Didn't receive anything! Please choose another option or try again. 😂💸";
         document.getElementById('modalButtons').innerHTML = `
-            <button class="modal-btn" onclick="closeModal()">Done, sent it to my girl! 🤭</button>
+            <button class="modal-btn secondary" onclick="showInitialPaymentModal()">🔙 Choose another option</button>
         `;
     }
 
