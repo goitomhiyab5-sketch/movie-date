@@ -377,15 +377,33 @@
             <button class="option-btn" onclick="selectOption('rule', 'If anyone checks their phone ➡️ Pay 500 Birr! 💸📱', this)">
                 <span>If anyone checks their phone ➡️ Pay 500 Birr! 💸📱</span>
             </button>
-            <button class="option-btn" onclick="selectOption('rule', 'Strictly No Spoilers Allowed! 🚫🤫', this)">
-                <span>Strictly No Spoilers Allowed! 🚫🤫</span>
+            <button class="option-btn" onclick="selectOption('rule', 'Must stay on video call the entire time! 📹❤️', this)">
+                <span>Must stay on video call the entire time! 📹❤️</span>
+            </button>
+        </div>
+        <button class="btn-main" onclick="goToAfterStep()">Next: After-Movie Plan 🌙</button>
+    </div>
+
+    <!-- Step 6: After-Movie Activity -->
+    <div class="step" id="step6">
+        <h1>After-Movie Activity 🌙</h1>
+        <p>What are we doing after the movie finishes?</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('afterActivity', 'Stay on call until we fall asleep 😴💤', this)">
+                <span>Stay on call until we fall asleep 😴💤</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('afterActivity', 'Late night deep talks 💬❤️', this)">
+                <span>Late night deep talks 💬❤️</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('afterActivity', 'Rate & review the movie together 🍿⭐', this)">
+                <span>Rate & review the movie together 🍿⭐</span>
             </button>
         </div>
         <button class="btn-main" onclick="finishSelection()">See Our Plan! 🎯</button>
     </div>
 
-    <!-- Step 6: Final Confirmation -->
-    <div class="step" id="step6">
+    <!-- Step 7: Final Confirmation -->
+    <div class="step" id="step7">
         <h1>It's a Date! 🕸️❤️</h1>
         <p>Here is our official movie date plan:</p>
         
@@ -410,6 +428,10 @@
                 <span class="summary-label">Official Rule</span>
                 <span class="summary-val" id="sumRule">-</span>
             </div>
+            <div class="summary-item">
+                <span class="summary-label">After-Movie Plan</span>
+                <span class="summary-val" id="sumAfter">-</span>
+            </div>
         </div>
 
         <div class="premiere-badge">
@@ -424,7 +446,8 @@
         food: '',
         drink: '',
         outfit: '',
-        rule: ''
+        rule: '',
+        afterActivity: ''
     };
 
     function selectOption(category, value, btn, isNewestMovie = true, isFullyNaked = false) {
@@ -503,9 +526,17 @@
         showStep(5);
     }
 
-    function finishSelection() {
+    function goToAfterStep() {
         if (!choices.rule) {
             alert('Please select a movie night rule!');
+            return;
+        }
+        showStep(6);
+    }
+
+    function finishSelection() {
+        if (!choices.afterActivity) {
+            alert('Please select an after-movie activity!');
             return;
         }
 
@@ -514,7 +545,8 @@
         document.getElementById('sumDrink').innerText = choices.drink;
         document.getElementById('sumOutfit').innerText = choices.outfit;
         document.getElementById('sumRule').innerText = choices.rule;
-        showStep(6);
+        document.getElementById('sumAfter').innerText = choices.afterActivity;
+        showStep(7);
     }
 
     function showStep(stepNum) {
