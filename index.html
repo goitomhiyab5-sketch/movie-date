@@ -1,4 +1,3 @@
-> Hiyab:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +6,15 @@
     <title>Distance Movie Night with Aminey! 🎥❤️</title>
     <style>
         :root {
-            --bg: #0b132b;
-            --card-bg: #1c2541;
+            --bg: #0b0d17;
+            --card-bg: rgba(20, 24, 40, 0.85);
             --primary: #e62429;
             --primary-hover: #ff3b3f;
-            --accent: #3a86ff;
-            --glow: #ff0055;
+            --accent: #00d2ff;
+            --glow: #e62429;
             --text: #ffffff;
             --text-sub: #cbd5e1;
-            --border: #334155;
+            --border: rgba(230, 36, 41, 0.5);
         }
 
         * {
@@ -28,29 +27,40 @@
         body {
             background-color: var(--bg);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(230, 36, 41, 0.35) 0%, transparent 45%),
-                radial-gradient(circle at 90% 80%, rgba(58, 134, 255, 0.35) 0%, transparent 45%),
-                linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
+                radial-gradient(circle at 50% 50%, rgba(230, 36, 41, 0.25) 0%, transparent 70%),
+                radial-gradient(circle at 20% 20%, rgba(0, 210, 255, 0.15) 0%, transparent 50%),
+                repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(255, 255, 255, 0.03) 41px, transparent 42px),
+                linear-gradient(135deg, #05070e 0%, #111625 100%);
+            background-attachment: fixed;
             color: var(--text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 520px;
-            background: rgba(28, 37, 65, 0.95);
-            border: 2px solid rgba(230, 36, 41, 0.4);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 36, 41, 0.25);
-            backdrop-filter: blur(10px);
+            max-width: 720px;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(230, 36, 41, 0.3), 0 20px 40px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .container::before {
+            content: "🕸️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.3;
         }
 
         .step {
@@ -79,36 +89,37 @@
         .shake-btn {
             animation: shake 0.4s ease-in-out;
             border-color: #ff3b3f !important;
-            box-shadow: 0 0 15px rgba(255, 59, 63, 0.7) !important;
+            box-shadow: 0 0 20px rgba(255, 59, 63, 0.8) !important;
         }
 
         h1 {
-            font-size: 1.7rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: #ffffff;
-            text-shadow: 0 0 12px rgba(230, 36, 41, 0.6);
+            text-shadow: 0 0 15px rgba(230, 36, 41, 0.8);
             line-height: 1.3;
+            letter-spacing: 0.5px;
         }
 
         p {
             color: var(--text-sub);
-            margin-bottom: 20px;
-            font-size: 1rem;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
             line-height: 1.6;
         }
 
         .welcome-msg, .final-msg {
-            background: rgba(11, 19, 43, 0.6);
+            background: rgba(10, 14, 26, 0.7);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
             text-align: left;
         }
 
         .welcome-msg p, .final-msg p {
-            margin-bottom: 12px;
-            font-size: 0.98rem;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
         }
 
         .welcome-msg p:last-child {
@@ -120,17 +131,16 @@
 
         .options-grid {
             display: grid;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 30px;
         }
-
         .option-btn {
-            background: #0b132b;
-            border: 1.5px solid var(--border);
+            background: rgba(11, 15, 28, 0.8);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
             color: var(--text);
-            padding: 15px 18px;
-            border-radius: 14px;
-            font-size: 1rem;
+            padding: 18px 22px;
+            border-radius: 16px;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -140,78 +150,80 @@
             justify-content: space-between;
         }
 
-> Hiyab:
-.option-btn:hover {
-            border-color: var(--accent);
-            background: #152238;
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: rgba(230, 36, 41, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(230, 36, 41, 0.4);
         }
 
         .option-btn.selected {
-            background: rgba(230, 36, 41, 0.25);
+            background: rgba(230, 36, 41, 0.3);
             border-color: var(--primary);
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(230, 36, 41, 0.4);
+            box-shadow: 0 0 20px rgba(230, 36, 41, 0.6);
         }
 
         .option-btn.featured {
-            border-color: rgba(230, 36, 41, 0.8);
-            background: rgba(230, 36, 41, 0.15);
-            box-shadow: 0 0 12px rgba(230, 36, 41, 0.2);
+            border-color: rgba(230, 36, 41, 0.9);
+            background: rgba(230, 36, 41, 0.2);
+            box-shadow: 0 0 15px rgba(230, 36, 41, 0.3);
         }
 
         .btn-main {
-            background: linear-gradient(135deg, #e62429 0%, #ff3b3f 100%);
+            background: linear-gradient(135deg, #e62429 0%, #b31217 100%);
             color: white;
-            border: none;
-            padding: 15px 28px;
-            border-radius: 14px;
-            font-size: 1.05rem;
+            border: 1px solid #ff4d4d;
+            padding: 18px 32px;
+            border-radius: 16px;
+            font-size: 1.15rem;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
             transition: all 0.25s ease;
-            box-shadow: 0 6px 20px rgba(230, 36, 41, 0.5);
+            box-shadow: 0 6px 25px rgba(230, 36, 41, 0.6);
+            letter-spacing: 0.5px;
         }
 
         .btn-main:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(230, 36, 41, 0.7);
+            box-shadow: 0 10px 30px rgba(230, 36, 41, 0.8);
+            background: linear-gradient(135deg, #ff3b3f 0%, #e62429 100%);
         }
 
         .custom-input {
             width: 100%;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 14px;
             border: 1.5px solid var(--border);
-            background: #0b132b;
+            background: rgba(11, 15, 28, 0.9);
             color: white;
             margin-top: 10px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             outline: none;
         }
 
         .custom-input:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(58, 134, 255, 0.4);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
         }
 
         .summary-box {
-            background: #0b132b;
+            background: rgba(11, 15, 28, 0.8);
             border: 1.5px solid var(--border);
-            border-radius: 14px;
-            padding: 20px;
+            border-radius: 18px;
+            padding: 25px;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .summary-item {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
         }
 
         .summary-item:last-child {
@@ -222,26 +234,29 @@
 
         .summary-label {
             color: var(--text-sub);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
         .summary-val {
-            color: #60a5fa;
-            font-weight: 600;
+            color: #00d2ff;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-align: right;
-            margin-left: 10px;
+            margin-left: 15px;
         }
 
         .premiere-badge {
             display: inline-block;
-            background: rgba(230, 36, 41, 0.2);
-            border: 1px solid var(--primary);
+            background: rgba(230, 36, 41, 0.25);
+            border: 1.5px solid var(--primary);
             color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(230, 36, 41, 0.3);
         }
     </style>
 </head>
@@ -262,9 +277,7 @@
     <!-- Step 1: Movie Selection -->
     <div class="step" id="step1">
         <h1>Spider-Man Movie Date! 🕷️</h1>
-
-> Hiyab:
-<p>Pick which Spider-Man movie we are watching:</p>
+        <p>Pick which Spider-Man movie we are watching:</p>
         <div class="options-grid">
             <button class="option-btn featured" onclick="selectOption('movie', 'Spider-Man: Brand New Day (Upcoming 2026)', this, true)">
                 <span>Brand New Day (Tom Holland) 🆕🕸️</span>
@@ -321,18 +334,57 @@
             </button>
             <button class="option-btn" onclick="selectOption('drink', 'Juice', this)">
                 <span>Juice 🧃</span>
-            </button>
+                </button>
             <button class="option-btn" onclick="selectOption('drink', 'Milkshake', this)">
                 <span>Milkshake 🥤</span>
             </button>
         </div>
         <input type="text" id="customDrink" class="custom-input" placeholder="Or type something else here..." oninput="setCustom('drink', this.value)">
         <br><br>
+        <button class="btn-main" onclick="goToOutfitStep()">Next: Dress Code 👗👕</button>
+    </div>
+
+    <!-- Step 4: Outfit Selection -->
+    <div class="step" id="step4">
+        <h1>Movie Dress Code 👗👕</h1>
+        <p>What are we wearing for movie night?</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('outfit', 'Cozy Pajamas 🛋️💤', this)">
+                <span>Cozy Pajamas 🛋️💤</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('outfit', 'T-Shirt & Shorts 👕🩳', this)">
+                <span>T-Shirt & Shorts 👕🩳</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('outfit', 'Half-Naked 🔥🌶️', this)">
+                <span>Half-Naked 🔥🌶️</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('outfit', 'Fully Naked 🙈🔞', this, false, true)">
+                <span>Fully Naked 🙈🔞</span>
+            </button>
+        </div>
+        <button class="btn-main" onclick="goToRuleStep()">Next: Movie Night Rule ⚠️</button>
+    </div>
+
+    <!-- Step 5: Rule Selection -->
+    <div class="step" id="step5">
+        <h1>Movie Night Rules ⚠️</h1>
+        <p>Pick our official movie night rule/penalty:</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('rule', 'If anyone falls asleep, they MUST deliver a chocolate gift the next day! 🍫🚚', this)">
+                <span>If anyone falls asleep $\rightarrow$ Chocolate gift delivered next day! 🍫🚚</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('rule', 'If anyone checks their phone, they pay 500 Birr! 💸📱', this)">
+                <span>If anyone checks their phone $\rightarrow$ Pay 500 Birr! 💸📱</span>
+            </button>
+            <button class="option-btn" onclick="selectOption('rule', 'Strictly No Spoilers Allowed! 🚫🤫', this)">
+                <span>Strictly No Spoilers Allowed! 🚫🤫</span>
+            </button>
+        </div>
         <button class="btn-main" onclick="finishSelection()">See Our Plan! 🎯</button>
     </div>
 
-    <!-- Step 4: Final Confirmation -->
-    <div class="step" id="step4">
+    <!-- Step 6: Final Confirmation -->
+    <div class="step" id="step6">
         <h1>It's a Date! 🕸️❤️</h1>
         <p>Here is our official movie date plan:</p>
         
@@ -340,9 +392,7 @@
             <div class="summary-item">
                 <span class="summary-label">Movie</span>
                 <span class="summary-val" id="sumMovie">-</span>
-
-> Hiyab:
-</div>
+            </div>
             <div class="summary-item">
                 <span class="summary-label">Food</span>
                 <span class="summary-val" id="sumFood">-</span>
@@ -350,6 +400,14 @@
             <div class="summary-item">
                 <span class="summary-label">Drink</span>
                 <span class="summary-val" id="sumDrink">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Dress Code</span>
+                <span class="summary-val" id="sumOutfit">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Official Rule</span>
+                <span class="summary-val" id="sumRule">-</span>
             </div>
         </div>
 
@@ -361,7 +419,7 @@
             <p>This special movie night officially premieres on July 31, 2026! ❤️</p>
             <p>📸 Take a screenshot of this page and send it to your boo. Then choose a time that works for both of you, hop on a video call, and press play together.</p>
             <p>Distance may keep you apart, but it doesn't have to keep date night away.</p>
-            <p><strong>One movie. Two hearts. One unforgettable night. ❤️🎥</strong></p>
+            <p style="text-align: center; margin-bottom: 0;"><strong>One movie. Two hearts. One unforgettable night. ❤️🎥</strong></p>
         </div>
     </div>
 </div>
@@ -370,16 +428,27 @@
     const choices = {
         movie: '',
         food: '',
-        drink: ''
+        drink: '',
+        outfit: '',
+        rule: ''
     };
 
-    function selectOption(category, value, btn, isNewest) {
-        if (category === 'movie' && isNewest === false) {
+    function selectOption(category, value, btn, isNewestMovie = true, isFullyNaked = false) {
+        if (category === 'movie' && isNewestMovie === false) {
             btn.classList.add('shake-btn');
             setTimeout(() => {
                 btn.classList.remove('shake-btn');
             }, 500);
             alert("Nope! You have to select the newest Spider-Man movie! 🕷️✨");
+            return;
+        }
+
+        if (category === 'outfit' && isFullyNaked === true) {
+            btn.classList.add('shake-btn');
+            setTimeout(() => {
+                btn.classList.remove('shake-btn');
+            }, 500);
+            alert("To unlock this premium subscription, you need to pay 10,000 Birr first! 💸😜");
             return;
         }
 
@@ -421,7 +490,7 @@
         showStep(3);
     }
 
-    function finishSelection() {
+    function goToOutfitStep() {
         const customDrinkVal = document.getElementById('customDrink').value;
         if (customDrinkVal.trim() !== '') choices.drink = customDrinkVal;
 
@@ -429,11 +498,29 @@
             alert('Please select or type a drink option!');
             return;
         }
+        showStep(4);
+    }
+
+    function goToRuleStep() {
+        if (!choices.outfit) {
+            alert('Please select an outfit option!');
+            return;
+        }
+        showStep(5);
+    }
+
+    function finishSelection() {
+        if (!choices.rule) {
+            alert('Please select a movie night rule!');
+            return;
+        }
 
         document.getElementById('sumMovie').innerText = choices.movie;
         document.getElementById('sumFood').innerText = choices.food;
         document.getElementById('sumDrink').innerText = choices.drink;
-        showStep(4);
+        document.getElementById('sumOutfit').innerText = choices.outfit;
+        document.getElementById('sumRule').innerText = choices.rule;
+        showStep(6);
     }
 
     function showStep(stepNum) {
