@@ -108,22 +108,6 @@
             line-height: 1.6;
         }
 
-        .photo-frame-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-        }
-
-        .couple-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            object-fit: contain;
-            background-color: #0b0d17;
-            box-shadow: 0 0 25px rgba(230, 36, 41, 0.6);
-        }
-
         .welcome-msg {
             background: rgba(10, 14, 26, 0.7);
             border: 1px solid var(--border);
@@ -374,10 +358,6 @@
     <!-- Step 0: Welcome Screen -->
     <div class="step active" id="step0">
         <h1>🎥 Welcome to Our First Distance Movie Night, Aminey! ❤️</h1>
-        
-        <div class="photo-frame-container">
-            <img src="YOUR_GRADUATION_PHOTO_URL_HERE.jpg" alt="Our Photo" class="couple-photo">
-        </div>
 
         <div class="welcome-msg">
             <p>Distance may keep us apart, but it can't stop us from making memories together.</p>
@@ -615,7 +595,6 @@
     }
 
     function showSimpleModal(message) {
-        document.getElementById('modalTextinnerText = message;
         document.getElementById('modalText').innerHTML = message;
         document.getElementById('modalButtons').innerHTML = '<button class="modal-btn" onclick="closeModal()">Got it! 😂</button>';
         document.getElementById('customModal').style.display = 'flex';
