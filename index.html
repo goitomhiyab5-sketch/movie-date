@@ -426,17 +426,14 @@
     <div class="step" id="step4">
         <h1>Movie Dress Code 👗👕</h1>
         <p>What are we wearing for movie night?</p>
-        <div class="options-grid">
+        <div class="options-grid" id="outfitGrid">
             <button class="option-btn" onclick="selectOption('outfit', 'Cozy Pajamas 🛋️💤', this)">
                 <span>Cozy Pajamas 🛋️💤</span>
             </button>
             <button class="option-btn" onclick="selectOption('outfit', 'T-Shirt & Shorts 👕🩳', this)">
                 <span>T-Shirt & Shorts 👕🩳</span>
             </button>
-            <button class="option-btn" onclick="selectOption('outfit', 'Half-Naked 🔥🌶️', this)">
-                <span>Half-Naked 🔥🌶️</span>
-            </button>
-            <button class="option-btn" onclick="selectOption('outfit', 'Fully Naked 🙈🔞', this, false, true, false)">
+            <button class="option-btn" id="fullyNakedBtn" onclick="selectOption('outfit', 'Fully Naked 🙈🔞', this, false, true, false)">
                 <span>Fully Naked 🙈🔞</span>
             </button>
             <button class="option-btn" onclick="selectOption('outfit', 'Something wild & completely off limits 🔥🥵', this, false, false, true)">
@@ -530,10 +527,10 @@
 <!-- Custom Styled Popup Modal with Payment Options -->
 <div id="customModal">
     <div class="modal-content">
-        <p id="modalText">To unlock this premium subscription, you need to pay 500,000 Birr first! You can pay this much to see your girl.</p>
+        <p id="modalText">To unlock this premium subscription, you need to pay 500,000 birr first. You can pay this much to see your girl.</p>
         <div class="modal-buttons" id="modalButtons">
-            <button class="modal-btn" onclick="showCbaAccount()">💳 Make the payment</button>
-            <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
+            <button class="modal-btn" onclick="showCbaAccount()">Make the payment</button>
+            <button class="modal-btn secondary" onclick="closeModal()">Choose another option</button>
         </div>
     </div>
 </div>
@@ -587,26 +584,39 @@
     }
 
     function showInitialPaymentModal() {
-        document.getElementById('modalText').innerHTML = "To unlock this premium subscription, you need to pay 500,000 Birr first! You can pay this much to see your girl.";
+        document.getElementById('modalText').innerHTML = "To unlock this premium subscription, you need to pay 500,000 birr first. You can pay this much to see your girl.";
         document.getElementById('modalButtons').innerHTML = `
-            <button class="modal-btn" onclick="showCbaAccount()">💳 Make the payment</button>
-            <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
+            <button class="modal-btn" onclick="showCbaAccount()">Make the payment</button>
+            <button class="modal-btn secondary" onclick="closeModal()">Choose another option</button>
         `;
         document.getElementById('customModal').style.display = 'flex';
     }
 
     function showCbaAccount() {
-        document.getElementById('modalText').innerHTML = "🏦 <b>Name: Aminey</b><br>Commercial Bank of Ethiopia Account:<br><br><span style='color: #00d2ff; font-size: 1.3rem;'>1000324250747</span><br><br>Send this birr immediately or the subscription remains locked! 📸😂";
+        document.getElementById('modalText').innerHTML = "<b>Hiyab Goitom Haile</b><br>Commercial Bank of Ethiopia account:<br><br><span style='color: #00d2ff; font-size: 1.3rem;'>1000324250747</span><br><br>Send this birr immediately or the subscription remains locked.";
         document.getElementById('modalButtons').innerHTML = `
-            <button class="modal-btn" onclick="checkScreenshot()">Check my screenshot! 🤭</button>
-            <button class="modal-btn secondary" onclick="closeModal()">🔙 Choose another option</button>
+            <button class="modal-btn" onclick="checkScreenshot()">Check my screenshot!</button>
+            <button class="modal-btn secondary" onclick="closeModal()">Choose another option</button>
         `;
     }
 
     function checkScreenshot() {
-        document.getElementById('modalText').innerHTML = "❌ Didn't receive anything! Please choose another option or try again. 😂💸";
+        const outfitGrid = document.getElementById('outfitGrid');
+        if (!document.getElementById('halfNakedBtn')) {
+            const halfNakedButton = document.createElement('button');
+            halfNakedButton.className = 'option-btn';
+            halfNakedButton.id = 'halfNakedBtn';
+            halfNakedButton.innerHTML = '<span>Half-Naked 🔥🌶️</span>';
+            halfNakedButton.onclick = function() {
+                selectOption('outfit', 'Half-Naked 🔥🌶️', this);
+            };
+            const fullyNakedBtn = document.getElementById('fullyNakedBtn');
+            outfitGrid.insertBefore(halfNakedButton, fullyNakedBtn);
+        }
+
+        document.getElementById('modalText').innerHTML = "Didn't receive anything so choose another option! 🔥";
         document.getElementById('modalButtons').innerHTML = `
-            <button class="modal-btn secondary" onclick="showInitialPaymentModal()">🔙 Choose another option</button>
+            <button class="modal-btn" onclick="closeModal()">Got it! Let's choose the half-naked option! 🤭</button>
         `;
     }
 
