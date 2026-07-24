@@ -108,7 +108,7 @@
             line-height: 1.6;
         }
 
-        .welcome-msg, .final-msg {
+        .welcome-msg {
             background: rgba(10, 14, 26, 0.7);
             border: 1px solid var(--border);
             border-radius: 18px;
@@ -117,7 +117,7 @@
             text-align: left;
         }
 
-        .welcome-msg p, .final-msg p {
+        .welcome-msg p {
             margin-bottom: 14px;
             font-size: 1.05rem;
         }
@@ -134,6 +134,7 @@
             gap: 15px;
             margin-bottom: 30px;
         }
+
         .option-btn {
             background: rgba(11, 15, 28, 0.8);
             border: 1.5px solid rgba(255, 255, 255, 0.15);
@@ -255,7 +256,7 @@
             border-radius: 30px;
             font-weight: 700;
             font-size: 1.05rem;
-            margin-bottom: 25px;
+            margin-top: 10px;
             box-shadow: 0 0 15px rgba(230, 36, 41, 0.3);
         }
     </style>
@@ -334,7 +335,7 @@
             </button>
             <button class="option-btn" onclick="selectOption('drink', 'Juice', this)">
                 <span>Juice 🧃</span>
-                </button>
+            </button>
             <button class="option-btn" onclick="selectOption('drink', 'Milkshake', this)">
                 <span>Milkshake 🥤</span>
             </button>
@@ -370,11 +371,11 @@
         <h1>Movie Night Rules ⚠️</h1>
         <p>Pick our official movie night rule/penalty:</p>
         <div class="options-grid">
-            <button class="option-btn" onclick="selectOption('rule', 'If anyone falls asleep, they MUST deliver a chocolate gift the next day! 🍫🚚', this)">
-                <span>If anyone falls asleep $\rightarrow$ Chocolate gift delivered next day! 🍫🚚</span>
+            <button class="option-btn" onclick="selectOption('rule', 'If anyone falls asleep ➡️ Chocolate gift delivered next day! 🍫🚚', this)">
+                <span>If anyone falls asleep ➡️ Chocolate gift delivered next day! 🍫🚚</span>
             </button>
-            <button class="option-btn" onclick="selectOption('rule', 'If anyone checks their phone, they pay 500 Birr! 💸📱', this)">
-                <span>If anyone checks their phone $\rightarrow$ Pay 500 Birr! 💸📱</span>
+            <button class="option-btn" onclick="selectOption('rule', 'If anyone checks their phone ➡️ Pay 500 Birr! 💸📱', this)">
+                <span>If anyone checks their phone ➡️ Pay 500 Birr! 💸📱</span>
             </button>
             <button class="option-btn" onclick="selectOption('rule', 'Strictly No Spoilers Allowed! 🚫🤫', this)">
                 <span>Strictly No Spoilers Allowed! 🚫🤫</span>
@@ -413,13 +414,6 @@
 
         <div class="premiere-badge">
             🍿 Coming Soon | 🎬 Premiere Date: July 31, 2026
-        </div>
-
-        <div class="final-msg">
-            <p>This special movie night officially premieres on July 31, 2026! ❤️</p>
-            <p>📸 Take a screenshot of this page and send it to your boo. Then choose a time that works for both of you, hop on a video call, and press play together.</p>
-            <p>Distance may keep you apart, but it doesn't have to keep date night away.</p>
-            <p style="text-align: center; margin-bottom: 0;"><strong>One movie. Two hearts. One unforgettable night. ❤️🎥</strong></p>
         </div>
     </div>
 </div>
