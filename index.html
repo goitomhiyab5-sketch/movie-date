@@ -372,7 +372,7 @@
         <h1>Spider-Man Movie Date! 🕷️</h1>
         <p>Pick which Spider-Man movie we are watching:</p>
         <div class="options-grid">
-            <button class="option-btn featured" onclick="selectOption('movie', 'Spider-Man: Brand New Day (Upcoming 2026)', this, true)">
+            <button class="option-btn featured selected" id="defaultMovieBtn" onclick="selectOption('movie', 'Spider-Man: Brand New Day (Upcoming 2026)', this, true)">
                 <span>Brand New Day (Tom Holland) 🆕🕸️</span>
             </button>
             <button class="option-btn" onclick="selectOption('movie', 'Spider-Verse Saga (Animated)', this, false)">
@@ -554,7 +554,7 @@
 
 <script>
     const choices = {
-        movie: '',
+        movie: 'Spider-Man: Brand New Day (Upcoming 2026)',
         food: '',
         drink: '',
         outfit: '',
